@@ -5,7 +5,7 @@
 **Ritstjóri sem keyrði:** [nafn]
 **Prompt:** [sjá neðst]
 
-> **Athugið:** Þessi texti er skrifaður af tungumálamódeli út frá heimildum sem eru skráðar í [heimildir.md](../heimildir.md). Hver fullyrðing vísar í heimild með auðkenni á borð við `[H001]`. Mannlegur ritstjóri hefur farið yfir og merkt ósammæli í [ritstjorn.md](../ritstjorn.md).
+> **Athugið:** Þessi texti er skrifaður af tungumálamódeli út frá heimildum í [../heimildir/](../heimildir/) og leiðbeiningum í [../ritstjorn.md](../ritstjorn.md). Hver fullyrðing vísar í heimild með smellanlegu auðkenni á borð við `[H001](../heimildir/H001-...md)`.
 
 ---
 
