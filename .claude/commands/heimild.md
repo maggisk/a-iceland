@@ -7,16 +7,16 @@ Notandi vill bæta nýrri heimild við mál `$1` af slóð `$2`.
 
 ## Verkefni
 
-1. **Athuga að málið sé til.** `mal/$1/ritstjorn.md` verður að vera til. Ef ekki, segðu notanda að keyra `/nyttmal $1 "<heiti>"` fyrst.
+1. **Athuga að málið sé til.** `malefni/$1/ritstjorn.md` verður að vera til. Ef ekki, segðu notanda að keyra `/nyttmal $1 "<heiti>"` fyrst.
 
 2. **Sækja efnið.** Notaðu `WebFetch` á slóð `$2` og dregdu fram aðalefnið (texta greinarinnar/skýrslunnar, ekki nav/auglýsingar/footer). Reyndu líka að finna í greininni:
    - Birtingardagsetning (`birt`)
    - Höfundur (`hofundur`)
    - Útgefandi (`utgefandi`)
 
-3. **Finna næsta auðkenni.** Listaðu `mal/$1/heimildir/` og finndu hæsta núverandi `H###` í skráarheitum. Næsta er einu hærra (eða `H001` ef tóm mappa).
+3. **Finna næsta auðkenni.** Listaðu `malefni/$1/heimildir/` og finndu hæsta núverandi `H###` í skráarheitum. Næsta er einu hærra (eða `H001` ef tóm mappa).
 
-4. **Búa til heimildaskrá.** Notaðu `snidmat/heimild.md` sem sniðmát. Skráin heitir `mal/$1/heimildir/H###-stutt-kebab-slug.md`. Slug skal vera 2–5 orð sem lýsa heimildinni (ASCII, kebab-case, ekki íslenskir stafir).
+4. **Búa til heimildaskrá.** Notaðu `snidmat/heimild.md` sem sniðmát. Skráin heitir `malefni/$1/heimildir/H###-stutt-kebab-slug.md`. Slug skal vera 2–5 orð sem lýsa heimildinni (ASCII, kebab-case, ekki íslenskir stafir).
 
    Fylltu inn:
    - **Frontmatter** með `id`, `url`, `sott` (dagsetning dagsins í dag), `birt`, `hofundur`, `utgefandi`, `tegund` (giskaðu: grein/skyrsla/log/tolfraedi/vidtal/samfelagsmidlar/annad), `sjonarhorn` (giskaðu: A/B/hlutlaust/blandad — biddu notanda að staðfesta í lokin).
@@ -27,7 +27,7 @@ Notandi vill bæta nýrri heimild við mál `$1` af slóð `$2`.
      - *Helstu fullyrðingar* — listi af aðalfullyrðingum
      - *Aðferð og umfang* — hvernig gögnum var safnað, hvað dekkar heimildin
      - *Hvað heimildin segir EKKI* — afmarkanir
-     - *Tengingar við aðrar heimildir* — ef einhverjar heimildir eru þegar til í `mal/$1/heimildir/`, þá berdu saman. Notaðu smellanleg auðkenni: `[H003](heimildir/H003-...md)`.
+     - *Tengingar við aðrar heimildir* — ef einhverjar heimildir eru þegar til í `malefni/$1/heimildir/`, þá berdu saman. Notaðu smellanleg auðkenni: `[H003](heimildir/H003-...md)`.
 
      **Mikilvægt:** Ekki skrifa áreiðanleika-mat, ekki rökstyðja sjónarhorn, ekki tilkall hagsmunatengingar í Greining-kafla. Það er hlutverk ritstjóra í `ritstjorn.md`.
 

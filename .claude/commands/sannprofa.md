@@ -10,9 +10,9 @@ Notandi vill sannprófa að allar `[H###]` tilvitnanir í máli `$1` séu gildar
 
 ## Verkefni
 
-1. **Finna gildar heimildir.** Listaðu `mal/$1/heimildir/*.md` og dragðu fram öll `H###` auðkenni úr skráarheitum (og staðfestu með `id:` í frontmatter).
+1. **Finna gildar heimildir.** Listaðu `malefni/$1/heimildir/*.md` og dragðu fram öll `H###` auðkenni úr skráarheitum (og staðfestu með `id:` í frontmatter).
 
-2. **Finna tilvitnanir í texta.** Grep-aðu allar `.md` skrár í `mal/$1/` **utan** `heimildir/` möppunni fyrir mynstri:
+2. **Finna tilvitnanir í texta.** Grep-aðu allar `.md` skrár í `malefni/$1/` **utan** `heimildir/` möppunni fyrir mynstri:
    - `\[H[0-9]+\]` (gamalt snið án linkar)
    - `\[H[0-9]+\]\(heimildir/[^)]+\)` (nýtt smellanlegt snið)
 
@@ -55,4 +55,4 @@ Sannprófun fyrir mál: $1
 Niðurstaða: <STENST / STENST EKKI — krefst aðgerða>
 ```
 
-Ef niðurstaðan er "STENST EKKI", legðu til hvað ritstjóri eigi að gera (t.d. "Bæta heimild H006 með `/heimild $1 <URL>` eða fjarlægja tilvitnun í `mal/$1/README.md:42`").
+Ef niðurstaðan er "STENST EKKI", legðu til hvað ritstjóri eigi að gera (t.d. "Bæta heimild H006 með `/heimild $1 <URL>` eða fjarlægja tilvitnun í `malefni/$1/README.md:42`").

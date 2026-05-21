@@ -7,12 +7,12 @@ Notandi vill búa til nýtt mál með slug `$1`. Mannlæsanlegt heiti málsins e
 
 Verkefni:
 
-1. Athugaðu að `mal/$1/` sé ekki þegar til. Ef til er, hætta og biðja notanda að velja annan slug.
-2. Búðu til möppurnar: `mal/$1/`, `mal/$1/heimildir/`, `mal/$1/ai-greining/`.
+1. Athugaðu að `malefni/$1/` sé ekki þegar til. Ef til er, hætta og biðja notanda að velja annan slug.
+2. Búðu til möppurnar: `malefni/$1/`, `malefni/$1/heimildir/`, `malefni/$1/ai-greining/`.
 3. Afritaðu sniðmát:
-   - `snidmat/README.md` → `mal/$1/README.md`
-   - `snidmat/ritstjorn.md` → `mal/$1/ritstjorn.md`
-   (Engin `heimildir.md` index-skrá — heimildir verða ein skrá per stykki í `mal/$1/heimildir/`, bætt við með `/heimild`.)
+   - `snidmat/README.md` → `malefni/$1/README.md`
+   - `snidmat/ritstjorn.md` → `malefni/$1/ritstjorn.md`
+   (Engin `heimildir.md` index-skrá — heimildir verða ein skrá per stykki í `malefni/$1/heimildir/`, bætt við með `/heimild`.)
 4. Skiptu út placeholder `[Heiti máls]` í báðum afrituðu skránum með málheiti notanda.
 5. Settu `Stofnað:` og `Síðast uppfært:` í `ritstjorn.md` á dagsetningu dagsins í dag.
 6. Tilkynntu hvað var gert og biddu notanda um:

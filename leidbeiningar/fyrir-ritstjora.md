@@ -4,10 +4,11 @@
 
 | Hver gerir hvað | |
 |---|---|
-| **Manneskja** | Velur mál. Skrifar `ritstjorn.md` (áherslu, afmörkun, leiðbeiningar). Samþykkir heimildir sem AI leggur til. Yfirfer útkomu. |
-| **AI** | Leitar að heimildum og leggur til. Sækir, vistar og lýsir samþykktum heimildum í `heimildir/H###-*.md`. Skrifar `README.md` málsins (samantekt). Skrifar greiningar í `ai-greining/`. |
+| **Manneskja** | Velur mál. Skrifar `ritstjorn.md` (áherslu, afmörkun, leiðbeiningar, **markmið fyrir ráðleggingu**). Yfirfer útkomu eftir á — fjarlægir lélegar heimildir, uppfærir `ritstjorn.md` með athugasemdum, og keyrir AI aftur ef þörf er á. **Vegur ráðleggingu AI á móti eigin reynslu**. |
+| **AI í `/rannsaka`** | Leitar að heimildum, velur sjálf þær sem standast gæðakröfur, sækir, vistar og lýsir í `heimildir/H###-*.md`. Idempotent — má keyra aftur til að bæta við. Stöðvar aðeins ef hagsmunatengd heimild lendir á því að vera lykilheimild. |
+| **AI í `/greina`** | Les allar heimildir og skrifar/uppfærir aðalskjalið `README.md` málsins með "Niðurstöður og tillögur gervigreindar"-kafla, og valkvæð reference-skjöl í `ai-greining/`. Bætir aldrei við heimildum. |
 
-`ritstjorn.md` er eina skjalið þar sem þín rödd birtist beint í málinu. Allt annað skrifar AI undir leiðsögn þeirrar raddar.
+`ritstjorn.md` er skjalið þar sem þín rödd setur rammann. AI gerir rannsóknina, greininguna og **leggur fram tillögu að lausn** — undir leiðsögn þinni. Mikilvægt: AI tekur afstöðu í ráðleggingar-skjalinu. Þú vegur hana, gagnrýnir, og uppfærir leiðbeiningar þegar þörf er á.
 
 ## Vinnuflæði fyrir nýtt mál
 
@@ -19,17 +20,19 @@
    - **Leiðbeiningar fyrir heimildaöflun** — t.d. "leitaðu á íslenskum fréttasíðum", "passaðu að ná báðum sjónarmiðum", "ekki nota greinar eldri en 2020"
    - Allt sem þú vilt að AI taki tillit til
 
-3. **Láta AI leita að heimildum.** Keyrðu `/rannsaka <slug>`. Þar sem `heimildir/` er tóm leggur AI fyrst til lista af kandídat-heimildum (með titli, slóð, tegund, sjónarhornsgiski og rökstuðningi), og bíður eftir samþykki þínu. Það segir líka frá leitarorðum sem það notaði — svo þú sjáir slagsíðu. Þú samþykkir, hafnar, eða bætir við.
+3. **Safna heimildum með `/rannsaka <slug>`.** AI leitar (mikið — íslenskt + ensku), velur og vistar heimildir sjálf í `heimildir/`. Skipunin er **idempotent**: keyrðu hana aftur og aftur til að dýpka safnið eða finna ný sjónarhorn. Hver keyrsla bætir við — yfirskrifar aldrei. Þú færð lokaskýrslu með leitarorðum, höfnuðum kandídötum, og sjónarmiðum sem AI fann ekki heimild fyrir. AI stöðvar eingöngu ef hagsmunatengd heimild er metin sem lykilheimild.
 
-4. **Bæta tilteknum heimildum við ef þörf er** með `/heimild <slug> <URL>` — t.d. ef þú átt PDF eða slóð sem AI fann ekki.
+4. **Bæta tilteknum heimildum við ef þú vilt** með `/heimild <slug> <URL>` — t.d. ef þú átt PDF eða slóð sem AI fann ekki.
 
-5. **Keyra AI aftur** með `/rannsaka <slug>` til að skrifa samantekt og greiningar út frá samþykktum heimildum.
+5. **Yfirfara heimildasafnið.** Lestu lokaskýrsluna úr `/rannsaka`. Eyddu lélegum heimildum handvirkt. Ef heimild þarf sérstaka meðhöndlun (hagsmunatengd, skoðanagrein), bættu henni við „Mat á heimildum" í `ritstjorn.md`.
 
-6. **Sannprófa.** Keyrðu `/sannprofa <slug>` til að athuga tilvitnanir. Opnaðu líka nokkrar heimildir handvirkt og athugaðu að AI hafi ekki misskilið.
+6. **Skrifa samantekt og greiningar með `/greina <slug>`.** Þegar safnið er nógu fjölbreytt. AI les allar heimildir og skrifar `README.md` + skrár í `ai-greining/`. Bætir aldrei við heimildum — ef vantar, þá keyrir þú `/rannsaka` aftur.
 
-7. **Skrá athugasemdir í `ritstjorn.md`** og endurkeyra. Iterativt: ef niðurstaða er ekki nógu góð — eða heimildaval er einsleitt — þá bætirðu við leiðbeiningu ("rannsakaðu líka X"), krossar gamla úr, og keyrir AI aftur. Ekki breyta AI-útgáfunni handvirkt nema í smáleiðréttingum (innsláttarvillur).
+7. **Sannprófa.** Keyrðu `/sannprofa <slug>` til að athuga tilvitnanir. Opnaðu líka nokkrar heimildir handvirkt og athugaðu að AI hafi ekki misskilið.
 
-8. **Commit-a.** Eitt mál = ein eða fleiri commits með skýrum titli. Hver AI-keyrsla má vera sér commit.
+8. **Skrá athugasemdir í `ritstjorn.md`** og endurkeyra. Iterativt: ef niðurstaða er ekki nógu góð — eða heimildaval er einsleitt — þá bætirðu við leiðbeiningu ("rannsakaðu líka X", "ekki nota heimildir frá Y"), krossar gamla úr, og keyrir AI aftur (`/rannsaka` fyrir heimildir, `/greina` fyrir skrif). Ekki breyta AI-útgáfunni handvirkt nema í smáleiðréttingum (innsláttarvillur).
+
+9. **Commit-a.** Eitt mál = ein eða fleiri commits með skýrum titli. Hver AI-keyrsla má vera sér commit.
 
 ## Yfirferðargátlisti
 
