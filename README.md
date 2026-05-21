@@ -42,6 +42,22 @@ leidbeiningar/         # Reglur fyrir AI og ritstjóra
 .claude/commands/      # Slash commands fyrir Claude Code workflow
 ```
 
+## Strúktúr
+
+```
+malefni/                # Mál sem hefur verið greint
+  <mál>/
+    README.md           # Aðalskjal með TL;DR, sögu, rökum, og niðurstöðu AI
+    ritstjorn.md        # Mannleg rödd: rammi, forsendur, slagsíða ritstjóra
+    heimildir/          # H001-H### með archive
+    ai-greining/        # Valkvæðar dýpkanir (fræðilegur rammi, samanburður)
+snidmat/                # Sniðmát fyrir ný mál
+leidbeiningar/          # Reglur fyrir AI og ritstjóra
+.claude/commands/       # Slash commands fyrir Claude Code workflow
+greining/               # Python tilraunir og kvantitatív greining
+                        # (sjá greining/README.md)
+```
+
 ## Hvernig á að lesa þetta repo
 
 Byrjaðu á `malefni/<mál>/README.md` — það er aðalskjalið. Uppbygging:

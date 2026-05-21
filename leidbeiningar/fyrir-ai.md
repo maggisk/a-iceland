@@ -52,6 +52,26 @@ Sniðmát: `snidmat/README.md`. Lykilkaflar í þessari röð:
 
 8. **Berðu virðingu fyrir mati ritstjóra.** Ef `ritstjorn.md` segir að heimild sé hagsmunatengd, skoðanagrein eða óstaðfest — endurspeglaðu það í texta þínum, ekki sem grunnstaðreynd.
 
+## Kvantitatívar tilraunir (valkvætt — Python í `greining/`)
+
+Þegar fullyrðing í heimild krefst kvantitatífrar prófunar (sensitivity, senario, cross-field líkan), máttu skrifa Python í `greining/src/<slug>/`. Sjá `greining/README.md` fyrir reglur.
+
+Dæmi þar sem þetta á við:
+- Endurbygging cost-benefit greiningar með opnum forsendum (er 9,2% IRR viðkvæmt fyrir afsláttarvöxtum?)
+- Senario "ef X% bílferða færast yfir á hjól, hvað gerist með CO2?"
+- Diffusion-líkan fyrir modal-shift adoption (cross-field beiting frá faraldurs-fræði)
+- Network-flæði fyrir transit-eftirspurnar-spá
+
+Reglur (sjá `greining/README.md` fyrir nánar):
+- Skýr tilgáta í kommentum
+- Skýrar forsendur — engar "magic numbers"
+- Tilvitnanir í heimildir fyrir grunngögn
+- Sensitivity analysis er skylda
+- Reproducible (engin randomness án seed)
+- Tengja við README málefnisins
+
+**Líkans-niðurstöður eru ekki sama og heimildir.** Þegar þú vísar í eigin tilraun í README, aðgreindu skýrt frá heimildum: "Skv. eigin sensitivity-greiningu (sjá `greining/src/...`)" frekar en "Skv. [H001]".
+
 ## Reglur fyrir ráðleggingu (gilda í kaflanum "Niðurstöður og tillögur gervigreindar" í `README.md`)
 
 Þessi kafli er **kjarnaframleiðsla** hvers máls — þar sem AI synthese-ar heimildir og leggur fram tillögu að lausn. Þetta er það sem aðgreinir þetta repo frá venjulegu yfirlits-safni.

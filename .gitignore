@@ -8,3 +8,18 @@ node_modules/
 
 # Claude Code user-specific settings (commands eru committaðar, settings ekki)
 .claude/settings.local.json
+
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Greining — exploratory notebooks ekki committaðir; raw data niðurhalið ekki heldur
+greining/notebooks/*.ipynb
+greining/data/raw/*
+!greining/data/raw/.gitkeep
