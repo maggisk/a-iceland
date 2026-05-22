@@ -1,0 +1,83 @@
+======================================================================
+T1 - Cowi 2024 IRR/BCR sensitivity-greining a samgongusattmala
+======================================================================
+
+Heimild: [H001], [H018], [H020], [H029], [H033], [H036]
+Tilraun: T1 ur ai-greining/tilraunir-hugmyndir.md
+Output dir: /Users/maggi/git/a-iceland/greining/outputs/samgongur
+
+CALIBRATION (bakreikna arlegan abata fyrir Cowi IRR 9.2%):
+  Cowi-stated IRR: 9.2%
+  Cowi-stated BCR: 3.50
+  Kalibrerud arlegur abati: 26.90 mrd/ar (fra ari 7)
+  Verified IRR: 9.20%
+  Verified BCR vid 5% afslatt: 2.22
+  (Athugid: BCR matchar ekki Cowi 3.5 vegna einfaldana - sja varnagla efst)
+
+SENSITIVITY 1: Afslattarvextir -> BCR (IRR obreyt)
+    Discount |    BCR |  NPV (mrd)
+        3.0% |   3.49 |        292
+        3.5% |   3.10 |        243
+        4.0% |   2.77 |        202
+        4.5% |   2.47 |        166
+        5.0% |   2.22 |        136
+        5.5% |   2.00 |        110
+        6.0% |   1.80 |         87
+        6.5% |   1.63 |         68
+        7.0% |   1.48 |         51
+
+SENSITIVITY 2: Kostnadar-framukeyrsla -> IRR (afslatt 5%)
+     Overrun | Final cost |     IRR |    BCR
+          0% |        311 |   9.20% |   2.22
+         10% |        342 |   8.27% |   1.93
+         20% |        373 |   7.48% |   1.69
+         30% |        404 |   6.78% |   1.49
+         40% |        435 |   6.16% |   1.31
+         50% |        466 |   5.61% |   1.16
+         60% |        498 |   5.12% |   1.03
+         70% |        529 |   4.67% |   0.93
+         80% |        560 |   4.27% |   0.84
+         90% |        591 |   3.89% |   0.77
+        100% |        622 |   3.55% |   0.71
+
+SENSITIVITY 3: Farthegaspa-faktor -> IRR (afslatt 5%)
+   Pass factor |     IRR |    BCR
+           50% |   3.55% |   0.71
+           60% |   4.82% |   0.96
+           70% |   6.00% |   1.27
+           80% |   7.12% |   1.59
+           90% |   8.18% |   1.90
+          100% |   9.20% |   2.22
+          110% |  10.18% |   2.54
+          120% |  11.13% |   2.85
+
+Smid heatmap (afslatt x kostnadar-framukeyrsla -> BCR)...
+  Heatmap saved: /Users/maggi/git/a-iceland/greining/outputs/samgongur/cowi-sensitivity-heatmap.png
+Smid tornado (IRR per forsendu-breytingu)...
+  Tornado saved: /Users/maggi/git/a-iceland/greining/outputs/samgongur/cowi-sensitivity-tornado.png
+
+======================================================================
+LYKILNIDURSTODUR
+======================================================================
+* BCR = 1.0 break-even vid afslatt: 9.2% (Cowi notar liklega ~5%, IRR per definitionem = 9.2%)
+* Vid Flyvbjerg-media rail cost-overrun (45%):
+    IRR fellur ur 9.2% nidur i 5.9%
+    BCR fellur ur 2.22 nidur i 1.24
+* Versta-fall (Flyvbjerg 45% overrun + farthega 70% af spa):
+    IRR: 3.3%
+    BCR vid 5% afslatt: 0.67
+
+* Hvenaer brotnar BCR < 1.0?
+    BCR fellur fyrst undir 1.0 vid kostnadar-framukeyrslu 30% + farthegaspa 70% (BCR = 0.80)
+
+ALYKTUN:
+* Cowi 9.2% IRR er ekki robust - feller skjott ef adur en helmingur af
+  Flyvbjerg-overrun gerist, og enn skjotari ef farthegaspa naest ekki.
+* Vid 'verstu fall' forsendur (Flyvbjerg media + 70% farthega) er IRR
+  nu thegar 3.3% og BCR 0.67. Ef tatil 5% hurdle,
+  thad gerir hagkvaemni vidkvaema.
+* Sterkasta einstaka forsendan: kostnadar-framukeyrsla. Liklegasta
+  ahaettan tengist directly Flyvbjerg-megaproject pattern [H036].
+
+Tenging vid README: Veikleiki #9 styrkt med konkret tolum.
+Naestu skref: T2 - Flyvbjerg reference-class forecasting med opnu gagnasafni.
